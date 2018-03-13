@@ -1,10 +1,10 @@
 <?php
-$host = 'localhost'
-$username = 'id5054791_admin'
-$password = 'events18'
-$dbname = 'id5054791_eventsource'
+$dbhost = 'localhost';
+$dbusername = 'id5054791_admin';
+$dbpassword = 'events18';
+$dbname = 'id5054791_eventsource';
 
-$conn = mysqli_connect($host, $username, $password, $dbname);
+$conn = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
 if (!$conn) {
 	echo "gagal boi";
 }else{
