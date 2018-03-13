@@ -12,6 +12,7 @@
 	<?php
 		if(isset($_SESSION["user"]))
 		{
+			echo "<p>Hello, ".$_SESSION["user"]["username"]."</p>";
 			?>
 				<p><a href="login/logout.php">Logout</a></p>
 			<?php
