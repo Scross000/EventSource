@@ -13,7 +13,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<!-- tes -->
 	<!-- header -->
 	<div>
 		
@@ -26,12 +25,18 @@
 			<li data-target="#eventCarousel" data-slide-to="0" class="active"></li>
 		    <li data-target="#eventCarousel" data-slide-to="1"></li>
 		    <li data-target="#eventCarousel" data-slide-to="2"></li>
+		    <li data-target="#eventCarousel" data-slide-to="3"></li>
+		    <li data-target="#eventCarousel" data-slide-to="4"></li>
 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-		    	<img src="la.jpg" alt="Los Angeles">
+				<form action="details/" method="POST">
+					<a href="javascript:;" onclick="parentNode.submit();">
+						<img src="images/testing.jpg" alt="Los Angeles"></a>
+					<input type="hidden" name="id" value="1">
+				</form>
 			</div>
 
 			<div class="item">
@@ -41,6 +46,15 @@
 			<div class="item">
 			    <img src="ny.jpg" alt="New York">
 			</div>
+
+			<div class="item">
+			    <img src="chicago.jpg" alt="Chicago">
+			</div>
+
+			<div class="item">
+			    <img src="ny.jpg" alt="New York">
+			</div>
+			
 		</div>
 
 		<!-- Left and right controls -->
