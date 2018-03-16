@@ -14,7 +14,7 @@
 			$jamEvent = $row["jam"];
 			$details = $row["detail"];
 			$lokasiEvent = $row["location"];
-			$imgUrl = "../".$row["img_url"];
+			$imgUrl = "images/".$row["img_url"];
 			$creatorId = $row["creator"];
 
 			$sql = "SELECT email FROM users WHERE id = '$creatorId'";
