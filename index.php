@@ -1,7 +1,7 @@
 <?php 
 // include('connection.php');
-//	include('conn.php');
-	include('conn1.php');
+	include('conn.php');
+	// include('conn1.php');
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,16 @@
 <body>
 	<!-- header -->
 	<div>
-		
+		<?php
+			if (isset($_SESSION["user"])) 
+			{
+				echo "<a class='btn btn-primary' href='users'>User Panel</a>";
+			}
+			else
+			{
+				echo "<a class='btn btn-primary' href='login'>Login</a>";
+			}
+		?>
 	</div>
 
 	<!-- Carousel -->

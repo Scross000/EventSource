@@ -1,5 +1,6 @@
 <?php
-	include('../conn1.php');
+	// include('../conn1.php');
+	include('../conn.php');
 	session_start();
 	$eventId = $_POST['id'];
 	$sqlCommand = "SELECT * FROM event WHERE id = '$eventId'";
