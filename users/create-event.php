@@ -39,8 +39,13 @@
 					<input type="date" name="start" id="inEndDate">
 					<div class="form-group">
 						<label for="inTime">Event Time</label>
-						<input type="text" class="form-control" name="time" id="inTime" placeholder="Enter Event Time" required>
+						<input type="text" class="form-control" name="time" id="inTime" placeholder="Enter Event Time (00:00-24:00)" required>
 						<!-- <input type="time" name="time" /> -->
+					</div>
+					<div class="form-group">
+						<label for="inUrl">Image URL</label>
+						<input type="text" class="form-control" name="url" id="inUrl" placeholder="Enter Image URL" aria-describedby="urlHelp" required>
+						<small id="urlHelp" class="form-text text-muted">Use one of free services to upload picture on the internet, for example, <a href="https://www.tinypic.com/" target="_blank">tinypic.com</a> and add the link to your image.</small>
 					</div>
 					<!-- <div class="form-check">
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -55,7 +60,7 @@
 					<br><br>
 				</form>
 			</div>
-		</div>
+		</div>	
 	</div>
 </body>
 </html>
