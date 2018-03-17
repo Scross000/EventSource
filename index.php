@@ -22,11 +22,21 @@
 	<div id="eventCarousel" class="carousel slide" data-ride="Carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#eventCarousel" data-slide-to="0" class="active"></li>
-		    <li data-target="#eventCarousel" data-slide-to="1"></li>
-		    <li data-target="#eventCarousel" data-slide-to="2"></li>
-		    <li data-target="#eventCarousel" data-slide-to="3"></li>
-		    <li data-target="#eventCarousel" data-slide-to="4"></li>
+			<?php
+				$sql = "SELECT * FROM event WHERE promote = 1";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					$i = 0;
+					while ($row = $result->fetch_assoc()) {
+						if ($i == 0) {
+							echo "<li data-target='#eventCarousel' data-slide-to='$i' class='active'></li>";
+						}else{
+							echo "<li data-target='#eventCarousel' data-slide-to='$i'></li>";
+						}
+						$i+=1;
+					}
+				}
+			?>
 		</ol>
 
 		<!-- Wrapper for slides -->
@@ -98,6 +108,22 @@
 				</thead>
 
 				<tbody>
+					<?php
+						$sql = "SELECT creator, name, start_date, end_date, img_url FROM event WHERE status = 1 ORDER BY id DESC";
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) {
+							$i = 0;
+							while ($row = $result->fetch_assoc()) {
+								if ($i < 5) {
+									
+								}
+								$i+=1;
+								if ($i == 5) {
+									$i = 0;
+								}
+							}
+						}
+					?>
 					<tr>
 						<td>
 							<div align="right">
