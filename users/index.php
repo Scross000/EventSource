@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	// include('connection.php');
+	include('../conn.php');
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +32,40 @@
 		    			<?php
 		    		}
 		    	?>
+				<table class="table">
+				  	<thead class="thead-dark">
+					    <tr>
+					      	<th scope="col">#</th>
+					      	<th scope="col">Event Name</th>
+					      	<th scope="col">Status</th>
+					      	<th scope="col">Promote</th>
+					      	<th scope="col">Action</th>
+					    </tr>
+				  	</thead>
+				  	<tbody>
+				  	<?php
+				  		$i=0;
+				  		$sql = "SELECT * FROM event";
+						$result = $conn->query($sql);
+						if ($result->num_rows > 0) 
+						{
+						    while($row = $result->fetch_assoc()) 
+						    {
+						    	$i++;
+						    	echo "
+									<tr>
+								      	<th scope='row'>".$i."</th>
+								      	<td>".$row['name']."</td>
+								      	<td>".$row['status']."</td>
+								      	<td>".$row['promote']."</td>
+								      	<td><a class='btn btn-warning'>Edit</a><a class='btn btn-danger'>Delete</a></td>
+								    </tr>
+						    	";
+						    }
+						}
+				  	?>
+				  	</tbody>
+				</table>
 		    </div>
 		</div>
 	</div>
