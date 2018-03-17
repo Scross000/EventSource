@@ -36,7 +36,7 @@
 					<label for="inStartDate">Event Start</label>
 					<input type="date" name="start" id="inStartDate">
 					<label for="inEndDate">Event End</label>
-					<input type="date" name="start" id="inEndDate">
+					<input type="date" name="end" id="inEndDate">
 					<div class="form-group">
 						<label for="inTime">Event Time</label>
 						<input type="text" class="form-control" name="time" id="inTime" placeholder="Enter Event Time (00:00-24:00)" required>
