@@ -66,16 +66,23 @@
 		if (mysqli_query($conn, $sqlInsert))
 		{
 		    echo "New record created successfully";
-		    $row = array();
-		    $row["tipe"]=1;
-		    $row["username"]=$username;
-		    $row["password"]=$password;
-		    $row["email"]=$email;
-		    $row["name"]=$name;
-		    $row["description"]='';
-		    $row["img_url"]='';
-		    $row["status"]=1;
-		    $_SESSION["user"] = $row;
+		    $sql = "SELECT * FROM users";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) 
+			{
+			    while($row = $result->fetch_assoc()) 
+			    {
+			    	if($row["username"]==$username)
+			    	{
+			    		$_SESSION["user"] = $row;
+			    		break;
+			    	}
+			    }
+			} 
+			else 
+			{
+			    echo "0 results";
+			}
 		} 
 		else 
 		{
