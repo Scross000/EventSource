@@ -7,10 +7,15 @@
 	$namaEvent;$periodeEvent;$jamEvent;$lokasiEvent;$contactPerson;
 	$details;$imgUrl;
 
+	// mengambil detail event berdasarkan id
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()){
 			$namaEvent = $row["name"];
-			$periodeEvent = $row["start_date"]." Till ".$row["end_date"];
+			$start = new DateTime($row["start_date"]);
+			$start = $start->format('d-m-Y');
+			$end = new DateTime($row["end_date"]);
+			$end = $end->format('d-m-Y');
+			$periodeEvent = $start." Till ".$end;
 			$jamEvent = $row["jam"];
 			$details = $row["detail"];
 			$lokasiEvent = $row["location"];
@@ -26,8 +31,6 @@
 			}
 		}
 	}
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,14 +65,35 @@
 		</div>
 		<!-- table harga -->
 		<div>
-			<table>
+			<table border="bold">
 				<thead>
+					<th>No.</th>
 					<th>Jenis Tiket</th>
 					<th>Jumlah Tiket</th>
 					<th>Harga Tiket</th>
 				</thead>
 				<tbody>
-					
+					<?php
+						// mengambil daftar harga tiket event
+						$sqlClass = "SELECT * FROM class WHERE event = '$eventId'";
+						$result2 = $conn->query($sqlClass);
+						$i = 1;
+						if ($result2->num_rows > 0) {
+							while ($row = $result2->fetch_assoc()) {
+								$jenis = $row["detail"];
+								$jumlah = $row["total"];
+								$harga = $row["price"];
+								echo 
+								"<tr>
+									<th>$i</th>
+									<th>$jenis</th>
+									<th>$jumlah</th>
+									<th>$harga</th>
+								</tr>";
+								$i +=1;
+							}
+						}
+					?>
 				</tbody>
 			</table>
 		</div>
