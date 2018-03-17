@@ -2,8 +2,19 @@
 	<div class="body">
 		<a href="">About Eventsource</a>
 		<div class="kanan">
-			<a href="/eventsource/register/index.php">Register</a>|
-			<a href="/eventsource/login/index.php">Login</a>
+		<?php
+			if (isset($_SESSION["user"])) 
+			{
+				echo "<a href='users'>Hello, ".$_SESSION["user"]["name"]."</a>";
+			}
+			else
+			{
+				echo "
+					<a href='/eventsource/register/index.php'>Register</a>|
+					<a href='/eventsource/login/index.php'>Login</a>
+				";
+			}
+		?>
 		</div>
 	</div>
 </div>

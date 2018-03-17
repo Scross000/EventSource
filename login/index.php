@@ -41,46 +41,46 @@
 							if($_SESSION['error']==1)
 							{
 					?>
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<strong>Whoops!</strong> Username not found!
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<!-- <div class="alert alert-danger" role="alert">
-							Username not found!
-					</div> -->
-					<?php
-					}
-					else if($_SESSION['error']==2)
-					{
-					?>
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<strong>Whoops!</strong> Password is not correct!
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<!-- <div class="alert alert-danger" role="alert">
-							Password is not correct!
-					</div> -->
-					<?php
-					}
-					else if($_SESSION['error']==3)
-					{
-					?>
-					<div class="alert alert-danger alert-dismissible fade show" role="alert">
-						<strong>Warning!</strong> Account has been blocked!
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<!-- <div class="alert alert-danger" role="alert">
-							Password is not correct!
-					</div> -->
-					<?php
-					}
-					}
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									<strong>Whoops!</strong> Username not found!
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<!-- <div class="alert alert-danger" role="alert">
+										Username not found!
+								</div> -->
+								<?php
+							}
+							else if($_SESSION['error']==2)
+							{
+								?>
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									<strong>Whoops!</strong> Password is not correct!
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<!-- <div class="alert alert-danger" role="alert">
+										Password is not correct!
+								</div> -->
+								<?php
+							}
+							else if($_SESSION['error']==3)
+							{
+								?>
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									<strong>Warning!</strong> Account has been blocked!
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<!-- <div class="alert alert-danger" role="alert">
+										Password is not correct!
+								</div> -->
+								<?php
+							}
+						}
 					?>
 				</div>
 				<div class="col vll"></div>
