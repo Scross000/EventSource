@@ -34,16 +34,10 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Event Source</title>
-</head>
+	<?php include('../head.php');?>
 <body>
 	<!-- header -->
-	<div>
-		<nav>
-			
-		</nav>
-	</div>
+	<?php include('../header.php');?>
 	<div>
 		<!-- picture -->
 		<div>
