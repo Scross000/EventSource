@@ -48,7 +48,7 @@
 							<div class='carousel-item active'>
 								<form action='details/' method='POST'>
 									<a href='javascript:;' onclick='parentNode.submit();'>
-										<img src='$imgUrl' alt='$namaEvent'>
+										<img class='carouselimg' src='$imgUrl' alt='$namaEvent'>
 										<div class='carousel-caption d-none d-md-block'>
 										    <h5>$namaEvent</h5>
 										    <p>$details</p>
@@ -66,7 +66,7 @@
 							<div class='carousel-item'>
 								<form action='details/' method='POST'>
 									<a href='javascript:;' onclick='parentNode.submit();'>
-										<img src='$imgUrl' alt='$namaEvent'>
+										<img class='carouselimg' src='$imgUrl' alt='$namaEvent'>
 										<div class='carousel-caption d-none d-md-block'>
 										    <h5>$namaEvent</h5>
 										    <p>$details</p>
@@ -129,11 +129,11 @@
 												<div style='position: relative;text-align: center;'>
 													<form action='details/' method='POST'>
 														<a href='javascript:;' onclick='parentNode.submit();'>
-															<img src=$imgUrl alt=$name>
-															<div style='position: absolute;bottom: 8px;left: 50%;transform: translate(-50%, -50%);'>
-																$name;
+															<img class='homeimg' src=$imgUrl alt=$name>
+															<div class='homeimgcapt'>
+																$name
 																<br>
-																$periode;
+																$periode
 															</div>
 														</a>
 														<input type='hidden' name='id' value='$creatorId'>
@@ -156,6 +156,8 @@
 				</tbody>
 			</table>
 		</div>
-	</div>				
+	</div>	
+</div>
+	<?php include('footer.php');?>			
 	</body>
 </html>

@@ -17,12 +17,12 @@ body{
 
 .kanan{
 	float: right;
+	display: inline-block;
 }
 
 .body{
 	width: 70%;
 	margin: 0 auto;
-	/*background: #555;*/
 }
 
 .headlogo{
@@ -57,6 +57,21 @@ ul{
 	border-color: #fff;
 }
 
+.homeimg{
+	width: 300px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.homeimgcapt{
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	width: 300px;
+	position: absolute;bottom: 8px;
+	left: 50%;
+	transform: translate(-50%, 0);'
+}
+
 .col{
 	padding: 0 5%;
 	margin-top: 2.5%;
@@ -75,4 +90,49 @@ ul{
 .btn-black{
 	background-color: #000;
 	border: none;
+}
+
+.detailpict{
+	width: 250px;
+	height: 400px;
+	object-fit: cover;
+	display: inline-block;
+}
+
+.details{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+.detailname{
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: 3rem;
+}
+
+.detaillain{
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: 1rem;
+	font-style: normal;
+	width: 75%;
+}
+
+.detaillain th{
+	border: none;	
+}
+
+.carouselimg{
+	width: 1500px;
+	height: 500px;
+	object-fit: cover;
+}
+
+.footer{
+	background-color: #000;
+	padding: .5% 0;
+	margin-top: 5%;
+	color: #fff;
+	height: 40px;
+   	bottom:0;
+   	width: 100%
 }

@@ -86,5 +86,7 @@
 				<div class="col vll"></div>
 			</div>
 		</div>
+		</div>
+	<!-- <?php include('../footer.php');?> -->
 	</body>
 </html>

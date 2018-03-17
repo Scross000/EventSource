@@ -7,7 +7,6 @@
 	$result = $conn->query($sqlCommand);
 	$namaEvent;$periodeEvent;$jamEvent;$lokasiEvent;$contactPerson;
 	$details;$imgUrl;
-
 	// mengambil detail event berdasarkan id
 	if ($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()){
@@ -16,13 +15,13 @@
 			$start = $start->format('d-m-Y');
 			$end = new DateTime($row["end_date"]);
 			$end = $end->format('d-m-Y');
-			$periodeEvent = $start." Till ".$end;
+			$periodeStart = $start;
+			$periodeEnd = $end;
 			$jamEvent = $row["jam"];
 			$details = $row["detail"];
 			$lokasiEvent = $row["location"];
 			$imgUrl = "../".$row["img_url"];
 			$creatorId = $row["creator"];
-
 			$sql = "SELECT email FROM users WHERE id = '$creatorId'";
 			$result1 = $conn->query($sql);
 			if ($result1->num_rows > 0) {
@@ -36,67 +35,89 @@
 <!DOCTYPE html>
 <html>
 	<?php include('../head.php');?>
-<body>
-	<!-- header -->
-	<?php include('../header.php');?>
-	<div>
-		<!-- picture -->
+	<body>
+		<!-- header -->
+		<?php include('../header.php');?>
 		<div>
-			<img src=<?php echo "$imgUrl";?>>
-		</div>
-
-		<!-- detail -->
-		<br>
-		<div>
-			<h3><?php echo $namaEvent;?></h3>
+			<div class="row">
+				<!-- picture -->
+				<img class="col-3 detailpict" src=<?php echo "$imgUrl";?>>
+				<!-- detail -->
+				<div class="col details">
+					<h2 class="detailname"><?php echo $namaEvent;?></h2>
+					<table class="table detaillain">
+						<tr>
+							<th><i class="fas fa-calendar-alt"></i></th>
+							<th>Tanggal Mulai</th>
+							<th>:</th>
+							<th><?php echo $periodeStart;?></th>
+						</tr>
+						<tr>
+							<th><i class="fas fa-calendar-alt"></i></th>
+							<th>Tanggal Selesai</th>
+							<th>:</th>
+							<th><?php echo $periodeEnd;?></th>
+						</tr>
+						<tr>
+							<th><i class="fas fa-clock"></i></th>
+							<th>Waktu</th>
+							<th>:</th>
+							<th><?php echo $jamEvent;?></th>
+						</tr>
+						<tr>
+							<th><i class="fas fa-map-marker"></i></th>
+							<th>Lokasi</th>
+							<th>:</th>
+							<th><?php echo $lokasiEvent;?></th>
+						</tr>
+						<tr>
+							<th><i class="fas fa-envelope"></i></th>
+							<th>Kontak</th>
+							<th>:</th>
+							<th><?php echo $contactPerson;?></th>
+						</tr>
+					</table>
+				</div>
+			</div>
 			<br>
-			<h3><?php echo $periodeEvent;?></h3>
-			<br>
-			<h3><?php echo $jamEvent;?></h3>
-			<br>
-			<h3><?php echo $lokasiEvent;?></h3>
-			<br>
-			<h3><?php echo $contactPerson;?></h3>
-		</div>
-		<!-- table harga -->
-		<div>
-			<table border="bold">
-				<thead>
-					<th>No.</th>
-					<th>Jenis Tiket</th>
-					<th>Jumlah Tiket</th>
-					<th>Harga Tiket</th>
-				</thead>
-				<tbody>
-					<?php
-						// mengambil daftar harga tiket event
-						$sqlClass = "SELECT * FROM class WHERE event = '$eventId'";
-						$result2 = $conn->query($sqlClass);
-						$i = 1;
-						if ($result2->num_rows > 0) {
-							while ($row = $result2->fetch_assoc()) {
-								$jenis = $row["detail"];
-								$jumlah = $row["total"];
-								$harga = $row["price"];
-								echo 
-								"<tr>
-									<th>$i</th>
-									<th>$jenis</th>
-									<th>$jumlah</th>
-									<th>$harga</th>
-								</tr>";
-								$i +=1;
+			<!-- detail lainnya -->
+			<div>
+				<h3>Deskripsi Event</h3>
+				<p><?php echo $details;?></p>
+			</div>
+			<!-- table harga -->
+			<div>
+				<h3>Tiket</h3>
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<th>Jenis Tiket</th>
+						<th>Jumlah Tiket</th>
+						<th>Harga Tiket</th>
+					</thead>
+					<tbody>
+						<?php
+							// mengambil daftar harga tiket event
+							$sqlClass = "SELECT * FROM class WHERE event = '$eventId'";
+							$result2 = $conn->query($sqlClass);
+							if ($result2->num_rows > 0) {
+								while ($row = $result2->fetch_assoc()) {
+									$jenis = $row["detail"];
+									$jumlah = $row["total"];
+									$harga = $row["price"];
+									echo
+									"<tr>
+														<th>$jenis</th>
+														<th>$jumlah</th>
+														<th>$harga</th>
+									</tr>";
+								}
 							}
-						}
-					?>
-				</tbody>
-			</table>
-		</div>
-
-		<!-- detail lainnya -->
-		<div>
-			<p><?php echo $details;?></p>
+						?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
+	<?php include('../footer.php');?>
 </body>
 </html>
