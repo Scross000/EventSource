@@ -31,29 +31,45 @@
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
-			<div class="item active">
-				<form action="details/" method="POST">
-					<a href="javascript:;" onclick="parentNode.submit();">
-						<img src="images/testing.jpg" alt="Los Angeles"></a>
-					<input type="hidden" name="id" value="1">
-				</form>
-			</div>
-
-			<div class="item">
-			    <img src="chicago.jpg" alt="Chicago">
-			</div>
-
-			<div class="item">
-			    <img src="ny.jpg" alt="New York">
-			</div>
-
-			<div class="item">
-			    <img src="chicago.jpg" alt="Chicago">
-			</div>
-
-			<div class="item">
-			    <img src="ny.jpg" alt="New York">
-			</div>
+			<?php
+				$sql = "SELECT * FROM event WHERE promote = 1 ORDER BY id DESC";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0 ) {
+					$i = 1;
+					while($row = $result->fetch_assoc()) {
+						$eventId = $row["id"];
+						$namaEvent = $row["name"];
+						//$imgUrl = "images/".$row["img_url"];
+						$imgUrl = "images/testing.jpg";
+						if ($i == 1) {
+							echo 
+							"
+							<div class='item active'>
+								<form action='details/' method='POST'>
+									<a href='javascript:;' onclick='parentNode.submit();'>
+										<img src='$imgUrl' alt='$namaEvent'></a>
+									<input type='hidden' name='id' value='$eventId'>
+								</form>
+							</div>
+							"
+							;
+						}else{
+							echo 
+							"
+							<div class='item'>
+								<form action='details/' method='POST'>
+									<a href='javascript:;' onclick='parentNode.submit();'>
+										<img src='$imgUrl' alt='$namaEvent'></a>
+									<input type='hidden' name='id' value='$eventId'>
+								</form>
+							</div>
+							"
+							;
+						}
+						$i += 1;
+					}
+				}
+			?>
 			
 		</div>
 
