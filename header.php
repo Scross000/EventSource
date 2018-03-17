@@ -5,7 +5,8 @@
 		<?php
 			if (isset($_SESSION["user"])) 
 			{
-				echo "<a href='users'>Hello, ".$_SESSION["user"]["name"]."</a>";
+				echo " | <a href='users'>Hello, ".$_SESSION["user"]["name"]."</a>";
+				echo " | <a href='login/logout.php'>Logout</a> |";
 			}
 			else
 			{
