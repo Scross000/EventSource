@@ -1,5 +1,5 @@
 <?php
-	// include('../conn1.php');
+	// include('../connection.php');
 	include('../conn.php');
 	session_start();
 	$eventId = $_POST['id'];
@@ -20,7 +20,7 @@
 			$jamEvent = $row["jam"];
 			$details = $row["detail"];
 			$lokasiEvent = $row["location"];
-			$imgUrl = "images/".$row["img_url"];
+			$imgUrl = "../".$row["img_url"];
 			$creatorId = $row["creator"];
 
 			$sql = "SELECT email FROM users WHERE id = '$creatorId'";
@@ -42,7 +42,7 @@
 	<div>
 		<!-- picture -->
 		<div>
-			<img src="lalala.jpg">
+			<img src=<?php echo "$imgUrl";?>>
 		</div>
 
 		<!-- detail -->
