@@ -6,14 +6,11 @@
 <!DOCTYPE html>
 <html>
 <?php include('head.php');?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
 	<!-- header -->
 		<?php include('header.php');?>
 	<!-- Carousel -->
-	<div id="eventCarousel" class="carousel slide" data-ride="Carousel">
+	<div id="eventCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<?php
@@ -43,14 +40,21 @@
 					while($row = $result->fetch_assoc()) {
 						$eventId = $row["id"];
 						$namaEvent = $row["name"];
+						$details = $row["detail"];	
 						$imgUrl = $row["img_url"];
 						if ($i == 1) {
 							echo 
 							"
-							<div class='item active'>
+							<div class='carousel-item active'>
 								<form action='details/' method='POST'>
 									<a href='javascript:;' onclick='parentNode.submit();'>
-										<img src='$imgUrl' alt='$namaEvent'></a>
+										<img src='$imgUrl' alt='$namaEvent'>
+										<div class='carousel-caption d-none d-md-block'>
+										    <h5>$namaEvent</h5>
+										    <p>$details</p>
+										</div>
+									</a>
+									
 									<input type='hidden' name='id' value='$eventId'>
 								</form>
 							</div>
@@ -59,10 +63,15 @@
 						}else{
 							echo 
 							"
-							<div class='item'>
+							<div class='carousel-item'>
 								<form action='details/' method='POST'>
 									<a href='javascript:;' onclick='parentNode.submit();'>
-										<img src='$imgUrl' alt='$namaEvent'></a>
+										<img src='$imgUrl' alt='$namaEvent'>
+										<div class='carousel-caption d-none d-md-block'>
+										    <h5>$namaEvent</h5>
+										    <p>$details</p>
+										</div>
+									</a>
 									<input type='hidden' name='id' value='$eventId'>
 								</form>
 							</div>
@@ -76,13 +85,13 @@
 		</div>
 
 		<!-- Left and right controls -->
-		<a class="left carousel-control" href="#eventCarousel" data-slide="prev">
-		    <span class="glyphicon glyphicon-chevron-left"></span>
-		    <span class="sr-only">Previous</span>
+		<a class="carousel-control-prev" href="#eventCarousel" data-slide="prev" role="button">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    		<span class="sr-only">Previous</span>
 		</a>
-		<a class="right carousel-control" href="#eventCarousel" data-slide="next">
-		    <span class="glyphicon glyphicon-chevron-right"></span>
-		    <span class="sr-only">Next</span>
+		<a class="carousel-control-next" href="#eventCarousel" data-slide="next" role="button">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    		<span class="sr-only">Next</span>
   		</a>
 	</div>
 	<!-- Event lists -->
@@ -90,38 +99,59 @@
 		<!-- event table -->
 		<div style="margin-left: 220px;margin-top: 50px">
 			<table id="eventLists" class="eventLists" border="bold" width="80%">
-				<thead>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
+				<thead >
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
 				</thead>
 				<tbody>
 				<?php
 					$sql = "SELECT creator, name, start_date, end_date, img_url FROM event WHERE status = 1 ORDER BY id DESC";
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
-						$i = 0;
-						while ($row = $result->fetch_assoc()) {
-							if ($i < 5) {
-											
-							}
-							$i+=1;
-							if ($i == 5) {
-								$i = 0;
-							}
+						$i = 0;$j = 0;
+						while ($j < 5 ) {
+							echo "<tr>";
+								while ($row = $result->fetch_assoc()) {
+									if ($i < 5) {
+										$creatorId = $row["creator"];
+										$name = $row["name"];
+										$start = new DateTime($row["start_date"]);
+										$start = $start->format('d-m-Y');
+										$end = new DateTime($row["end_date"]);
+										$end = $end->format('d-m-Y');
+										$periode = $start." Till ".$end;
+										$imgUrl = $row["img_url"];
+										echo "
+											<td>
+												<div style='position: relative;text-align: center;'>
+													<form action='details/' method='POST'>
+														<a href='javascript:;' onclick='parentNode.submit();'>
+															<img src=$imgUrl alt=$name>
+															<div style='position: absolute;bottom: 8px;left: 50%;transform: translate(-50%, -50%);'>
+																$name;
+																<br>
+																$periode;
+															</div>
+														</a>
+														<input type='hidden' name='id' value='$creatorId'>
+													</form>
+												</div>
+											</td>
+										";
+									}
+									$i+=1;
+									if ($i == 5) {
+										$i = 0;
+										break;
+									}
+								}
+							echo "</tr>";
 						}
 					}
 				?>
-				<tr>
-					<td>
-						<div align="right">
-							<p>judul</p>
-							<p>no</p>
-						</div>
-					</td>
-				</tr>
 				</tbody>
 			</table>
 		</div>
