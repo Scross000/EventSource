@@ -11,7 +11,7 @@
 	<script>
 		function showResult(str) {
 			if (str.length == 0) {
-				//document.getElementById("searchEvent").innerHTML = "Search Event...";
+				document.getElementById("searchEvent").innerHTML = "";
 				document.getElementById("searchEvent").style.border="0px";
 				return;
 			}
