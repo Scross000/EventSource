@@ -2,7 +2,11 @@
 	// include('../connection.php');
 	include('../conn.php');
 	session_start();
-	$eventId = $_POST['id'];
+	if (isset($_GET["q"])) {
+		$eventId = $_GET['q'];
+	}else{
+		$eventId = $_POST['id'];
+	}
 	$sqlCommand = "SELECT * FROM event WHERE id = '$eventId'";
 	$result = $conn->query($sqlCommand);
 	$namaEvent;$periodeEvent;$jamEvent;$lokasiEvent;$contactPerson;
@@ -89,12 +93,12 @@
 			<div>
 				<h3>Tiket</h3>
 				<table class="table table-hover">
-					<thead class="thead-dark">
+					<thead class="thead-dark" style="text-align: center;">
 						<th>Jenis Tiket</th>
 						<th>Jumlah Tiket</th>
 						<th>Harga Tiket</th>
 					</thead>
-					<tbody>
+					<tbody style="text-align: center;">
 						<?php
 							// mengambil daftar harga tiket event
 							$sqlClass = "SELECT * FROM class WHERE event = '$eventId'";
@@ -107,8 +111,8 @@
 									echo
 									"<tr>
 														<th>$jenis</th>
-														<th>$jumlah</th>
-														<th>$harga</th>
+														<th>$jumlah kursi</th>
+														<th>Rp. $harga</th>
 									</tr>";
 								}
 							}
