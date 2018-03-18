@@ -2,7 +2,11 @@
 	// include('../connection.php');
 	include('../conn.php');
 	session_start();
-	$eventId = $_POST['id'];
+	if (isset($_GET["q"])) {
+		$eventId = $_GET['q'];
+	}else{
+		$eventId = $_POST['id'];
+	}
 	$sqlCommand = "SELECT * FROM event WHERE id = '$eventId'";
 	$result = $conn->query($sqlCommand);
 	$namaEvent;$periodeEvent;$jamEvent;$lokasiEvent;$contactPerson;
