@@ -11,7 +11,7 @@
 			else
 			{
 				echo "
-					<a href='/eventsource/register/index.php'>Register</a>|
+					<a href='/eventsource/register/index.php'>Register</a> | 
 					<a href='/eventsource/login/index.php'>Login</a>
 				";
 			}
