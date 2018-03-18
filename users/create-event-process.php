@@ -10,7 +10,8 @@
 	$start = $_POST["start"];
 	$end = $_POST["end"];
 	$url = $_POST["url"];
-	$status = 0;
+	// $status = 0;
+	$status = 1;
 	$promote = 0;
 	$creator = $_SESSION["user"]["id"];
 
