@@ -2,7 +2,7 @@
 	//include('connection.php');
 	include('conn.php');
 
-	$searchedName = $_GET["q"];
+	$searchedName = $_GET["name"];
 
 	if (strlen($searchedName)>0) {
 		$sql = "SELECT * FROM event WHERE status = 1";

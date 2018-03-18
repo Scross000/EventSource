@@ -27,7 +27,7 @@
 			      document.getElementById("searchEvent").style.border="1px solid #A5ACB2";
 			    }
 			}
-			xmlhttp.open("GET", "eventSearch.php?q="+str, true);
+			xmlhttp.open("GET", "../eventsource/eventSearch.php?name="+str, true);
 			xmlhttp.send();
 		}
 	</script>
